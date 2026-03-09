@@ -1,6 +1,15 @@
+"use client";
+
+import { motion } from "motion/react";
 import { TRACKS, FEATURED_TOPICS, STATS, VALUE_PROPS } from "@/lib/constants";
 import AnimatedCounter from "@/app/components/AnimatedCounter";
-import ScrollReveal from "@/app/components/ScrollReveal";
+import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
+
+/* ── Framer Motion scroll-reveal variant (replaces custom ScrollReveal) ── */
+const reveal = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0 },
+};
 
 /* ── Track Icons (inline SVG, stroke-only, architectural) ── */
 const TRACK_ICONS: Record<string, React.ReactNode> = {
@@ -39,8 +48,7 @@ const TRACK_ICONS: Record<string, React.ReactNode> = {
   ),
   "performance-security": (
     <svg className="h-7 w-7 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-      <circle cx="12" cy="12" r="10" />
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
     </svg>
   ),
 };
@@ -66,6 +74,7 @@ const VALUE_ICONS: React.ReactNode[] = [
   </svg>,
 ];
 
+
 export default function Home() {
   return (
     <>
@@ -87,11 +96,11 @@ export default function Home() {
 
         <div className="relative z-10 max-w-3xl">
           {/* Overline */}
-          <p className="animate-fade-in-up text-xs font-medium uppercase tracking-[0.25em] text-muted">
+          <p className="animate-fade-in-up mt-16 text-xs font-medium uppercase tracking-[0.25em] text-muted">
             Deep Dive into Frontend Engineering
           </p>
 
-          {/* Heading */}
+          {/* Heading with FlipWords */}
           <h1
             className="animate-fade-in-up mt-8 font-heading text-5xl font-bold leading-[1.1] text-platinum md:text-7xl"
             style={{ animationDelay: "100ms", letterSpacing: "-0.02em" }}
@@ -100,14 +109,18 @@ export default function Home() {
             <span className="text-accent">Frontend Engineering</span>
           </h1>
 
-          {/* Subheading */}
-          <p
-            className="animate-fade-in-up mx-auto mt-8 max-w-xl text-lg leading-relaxed text-secondary"
+          {/* Subheading with TextGenerateEffect */}
+          <div
+            className="animate-fade-in-up mx-auto mt-8 max-w-xl"
             style={{ animationDelay: "200ms" }}
           >
-            Your comprehensive, framework-agnostic guide to every core frontend
-            concept — from browser internals to system design.
-          </p>
+            <TextGenerateEffect
+              words="Your comprehensive, framework-agnostic guide to every core frontend concept — from browser internals to system design."
+              className="!font-normal"
+              duration={0.4}
+              filter={false}
+            />
+          </div>
 
           {/* CTAs */}
           <div
@@ -155,25 +168,41 @@ export default function Home() {
           ═══════════════════════════════════════════════════════ */}
       <section id="tracks" className="px-6 py-24 md:py-32">
         <div className="mx-auto max-w-6xl">
-          <ScrollReveal>
-            <div className="text-center">
-              <h2
-                className="font-heading text-3xl font-semibold text-platinum md:text-4xl"
-                style={{ letterSpacing: "-0.02em" }}
-              >
-                Learning Tracks
-              </h2>
-              <p className="mx-auto mt-4 max-w-lg text-secondary">
-                Structured paths from fundamentals to mastery. Each track builds
-                on the last, guiding you through frontend engineering
-                systematically.
-              </p>
-            </div>
-          </ScrollReveal>
+          <motion.div
+            variants={reveal}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+            className="text-center"
+          >
+            <h2
+              className="font-heading text-3xl font-semibold text-platinum md:text-4xl"
+              style={{ letterSpacing: "-0.02em" }}
+            >
+              Learning Tracks
+            </h2>
+            <p className="mx-auto mt-4 max-w-lg text-secondary">
+              Structured paths from fundamentals to mastery. Each track builds
+              on the last, guiding you through frontend engineering
+              systematically.
+            </p>
+          </motion.div>
 
           <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {TRACKS.map((track, i) => (
-              <ScrollReveal key={track.id} delay={i * 80}>
+              <motion.div
+                key={track.id}
+                variants={reveal}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.6,
+                  ease: [0.25, 0.1, 0.25, 1],
+                  delay: i * 0.08,
+                }}
+              >
                 <div id={track.id} className="track-card flex h-full flex-col p-8">
                   {/* Icon */}
                   <div className="mb-6">
@@ -211,7 +240,7 @@ export default function Home() {
                     <span className="text-xs text-accent">→</span>
                   </div>
                 </div>
-              </ScrollReveal>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -225,30 +254,40 @@ export default function Home() {
           ═══════════════════════════════════════════════════════ */}
       <section id="topics" className="px-6 py-24 md:py-32">
         <div className="mx-auto max-w-6xl">
-          <ScrollReveal>
-            <div className="text-center">
-              <h2
-                className="font-heading text-3xl font-semibold text-platinum md:text-4xl"
-                style={{ letterSpacing: "-0.02em" }}
-              >
-                Featured Topics
-              </h2>
-              <p className="mx-auto mt-4 max-w-lg text-secondary">
-                Essential frontend concepts every engineer should master.
-                Dive into any subject that interests you.
-              </p>
-            </div>
-          </ScrollReveal>
+          <motion.div
+            variants={reveal}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+            className="text-center"
+          >
+            <h2
+              className="font-heading text-3xl font-semibold text-platinum md:text-4xl"
+              style={{ letterSpacing: "-0.02em" }}
+            >
+              Featured Topics
+            </h2>
+            <p className="mx-auto mt-4 max-w-lg text-secondary">
+              Essential frontend concepts every engineer should master.
+              Dive into any subject that interests you.
+            </p>
+          </motion.div>
 
-          <ScrollReveal delay={120}>
-            <div className="mt-12 flex flex-wrap justify-center gap-3">
-              {FEATURED_TOPICS.map((topic) => (
-                <span key={topic} className="topic-pill">
-                  {topic}
-                </span>
-              ))}
-            </div>
-          </ScrollReveal>
+          <motion.div
+            variants={reveal}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1], delay: 0.12 }}
+            className="mt-12 flex flex-wrap justify-center gap-3"
+          >
+            {FEATURED_TOPICS.map((topic) => (
+              <span key={topic} className="topic-pill">
+                {topic}
+              </span>
+            ))}
+          </motion.div>
         </div>
       </section>
 
@@ -260,24 +299,40 @@ export default function Home() {
           ═══════════════════════════════════════════════════════ */}
       <section id="about" className="px-6 py-24 md:py-32">
         <div className="mx-auto max-w-6xl">
-          <ScrollReveal>
-            <div className="text-center">
-              <h2
-                className="font-heading text-3xl font-semibold text-platinum md:text-4xl"
-                style={{ letterSpacing: "-0.02em" }}
-              >
-                Why Frontend Mastery
-              </h2>
-              <p className="mx-auto mt-4 max-w-lg text-secondary">
-                Not just another tutorial site. A deeply researched, beautifully
-                crafted learning experience built for engineers.
-              </p>
-            </div>
-          </ScrollReveal>
+          <motion.div
+            variants={reveal}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+            className="text-center"
+          >
+            <h2
+              className="font-heading text-3xl font-semibold text-platinum md:text-4xl"
+              style={{ letterSpacing: "-0.02em" }}
+            >
+              Why Frontend Mastery
+            </h2>
+            <p className="mx-auto mt-4 max-w-lg text-secondary">
+              Not just another tutorial site. A deeply researched, beautifully
+              crafted learning experience built for engineers.
+            </p>
+          </motion.div>
 
           <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-3">
             {VALUE_PROPS.map((prop, i) => (
-              <ScrollReveal key={prop.title} delay={i * 100}>
+              <motion.div
+                key={prop.title}
+                variants={reveal}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.6,
+                  ease: [0.25, 0.1, 0.25, 1],
+                  delay: i * 0.1,
+                }}
+              >
                 <div className="value-card h-full">
                   {VALUE_ICONS[i]}
                   <h3 className="mt-6 font-heading text-lg font-semibold text-platinum">
@@ -287,7 +342,7 @@ export default function Home() {
                     {prop.description}
                   </p>
                 </div>
-              </ScrollReveal>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -298,7 +353,13 @@ export default function Home() {
           ═══════════════════════════════════════════════════════ */}
       <section className="cta-section px-6 py-24 md:py-32">
         <div className="mx-auto max-w-2xl text-center">
-          <ScrollReveal>
+          <motion.div
+            variants={reveal}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+          >
             <h2
               className="font-heading text-3xl font-semibold text-platinum md:text-4xl"
               style={{ letterSpacing: "-0.02em" }}
@@ -317,7 +378,7 @@ export default function Home() {
                 Start Learning →
               </a>
             </div>
-          </ScrollReveal>
+          </motion.div>
         </div>
       </section>
     </>

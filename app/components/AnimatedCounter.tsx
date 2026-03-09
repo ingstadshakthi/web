@@ -1,66 +1,64 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
+import {
+  useMotionValue,
+  useTransform,
+  animate,
+  useInView,
+  motion,
+} from "motion/react";
+import { cn } from "@/lib/utils";
 
-interface AnimatedCounterProps {
+export default function AnimatedCounter({
+  value,
+  suffix = "",
+  label,
+  className,
+}: {
   value: number;
   suffix?: string;
   label: string;
-}
-
-export default function AnimatedCounter({ value, suffix = "", label }: AnimatedCounterProps) {
-  const [count, setCount] = useState(0);
+  className?: string;
+}) {
   const ref = useRef<HTMLDivElement>(null);
-  const hasAnimated = useRef(false);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const count = useMotionValue(0);
+  const rounded = useTransform(count, (v) => Math.round(v));
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
+    if (isInView) {
+      const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
 
-    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (prefersReducedMotion) {
+        count.set(value);
+        return;
+      }
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !hasAnimated.current) {
-          hasAnimated.current = true;
-
-          if (prefersReduced) {
-            setCount(value);
-            return;
-          }
-
-          const duration = 1400;
-          const steps = 50;
-          const increment = value / steps;
-          let current = 0;
-
-          const timer = setInterval(() => {
-            current += increment;
-            if (current >= value) {
-              setCount(value);
-              clearInterval(timer);
-            } else {
-              setCount(Math.floor(current));
-            }
-          }, duration / steps);
-        }
-      },
-      { threshold: 0.5 }
-    );
-
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [value]);
+      animate(count, value, {
+        duration: 1.5,
+        ease: [0.25, 0.1, 0.25, 1],
+      });
+    }
+  }, [isInView, value, count]);
 
   return (
-    <div ref={ref} className="text-center">
-      <div className="font-heading text-4xl font-semibold tracking-tight text-platinum md:text-5xl">
-        {count}
-        {suffix}
+    <div ref={ref} className={cn("text-center", className)}>
+      <div className="flex items-baseline justify-center gap-0.5">
+        <motion.span className="font-heading text-4xl font-bold text-platinum md:text-5xl">
+          {rounded}
+        </motion.span>
+        {suffix && (
+          <span className="font-heading text-3xl font-bold text-accent md:text-4xl">
+            {suffix}
+          </span>
+        )}
       </div>
-      <div className="mt-3 text-xs font-medium uppercase tracking-[0.2em] text-muted">
+      <p className="mt-2 text-xs font-medium uppercase tracking-[0.2em] text-muted">
         {label}
-      </div>
+      </p>
     </div>
   );
 }
