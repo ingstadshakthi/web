@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 import { TRACKS, FEATURED_TOPICS, STATS, VALUE_PROPS } from "@/lib/constants";
 import AnimatedCounter from "@/app/components/AnimatedCounter";
+import { TypewriterCycle } from "@/app/components/TypewriterCycle";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 
 /* ── Framer Motion scroll-reveal variant (replaces custom ScrollReveal) ── */
@@ -105,8 +106,17 @@ export default function Home() {
             className="animate-fade-in-up mt-8 font-heading text-5xl font-bold leading-[1.1] text-platinum md:text-7xl"
             style={{ animationDelay: "100ms", letterSpacing: "-0.02em" }}
           >
-            Master the Art of{" "}
-            <span className="text-accent">Frontend Engineering</span>
+            Master the Art of
+            <br />
+            <span className="inline-block min-h-[1.2em]">
+              <TypewriterCycle
+                words={["Frontend Engineering", "System Design", "Web Performance"]}
+                typingSpeed={90}
+                deletingSpeed={45}
+                pauseDuration={3000}
+                className="text-accent"
+              />
+            </span>
           </h1>
 
           {/* Subheading with TextGenerateEffect */}
