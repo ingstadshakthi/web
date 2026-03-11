@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "motion/react";
-import { TRACKS, FEATURED_TOPICS, STATS, VALUE_PROPS } from "@/lib/constants";
+import Link from "next/link";
+import { TRACKS, FEATURED_TOPICS, STATS, VALUE_PROPS, TOPIC_ROUTES } from "@/lib/constants";
 import AnimatedCounter from "@/app/components/AnimatedCounter";
 import { TypewriterCycle } from "@/app/components/TypewriterCycle";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
@@ -231,12 +232,26 @@ export default function Home() {
 
                   {/* Topics List */}
                   <ul className="mt-5 space-y-1.5 border-t border-divider pt-5">
-                    {track.topics.map((topic) => (
-                      <li key={topic} className="flex items-start gap-2 text-xs text-muted">
-                        <span className="mt-1 block h-1 w-1 shrink-0 rounded-full bg-accent opacity-50" />
-                        {topic}
-                      </li>
-                    ))}
+                    {track.topics.map((topic) => {
+                      const route = TOPIC_ROUTES[topic];
+                      return (
+                        <li key={topic} className="flex items-start gap-2 text-xs">
+                          <span className={`mt-1 block h-1 w-1 shrink-0 rounded-full ${route ? 'bg-accent' : 'bg-accent opacity-50'}`} />
+                          {route ? (
+                            <Link
+                              href={route}
+                              className="text-platinum hover:text-accent flex items-center gap-1.5 group"
+                              style={{ transition: "color 300ms cubic-bezier(0.25, 0.1, 0.25, 1)" }}
+                            >
+                              {topic}
+                              <span className="text-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300">→</span>
+                            </Link>
+                          ) : (
+                            <span className="text-muted">{topic}</span>
+                          )}
+                        </li>
+                      );
+                    })}
                   </ul>
 
                   {/* Topic Count Badge */}
@@ -292,11 +307,18 @@ export default function Home() {
             transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1], delay: 0.12 }}
             className="mt-12 flex flex-wrap justify-center gap-3"
           >
-            {FEATURED_TOPICS.map((topic) => (
-              <span key={topic} className="topic-pill">
-                {topic}
-              </span>
-            ))}
+            {FEATURED_TOPICS.map((topic) => {
+              const route = TOPIC_ROUTES[topic];
+              return route ? (
+                <Link key={topic} href={route} className="topic-pill hover:border-accent/40 hover:text-accent" style={{ transition: "all 300ms cubic-bezier(0.25, 0.1, 0.25, 1)" }}>
+                  {topic}
+                </Link>
+              ) : (
+                <span key={topic} className="topic-pill">
+                  {topic}
+                </span>
+              );
+            })}
           </motion.div>
         </div>
       </section>

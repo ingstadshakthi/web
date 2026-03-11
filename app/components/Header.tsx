@@ -2,9 +2,11 @@
 
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-import { NAV_LINKS, ALL_TOPICS, SITE_CONFIG } from "@/lib/constants";
+import { useRouter } from "next/navigation";
+import { NAV_LINKS, ALL_TOPICS, SITE_CONFIG, TOPIC_ROUTES } from "@/lib/constants";
 
 export default function Header() {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [query, setQuery] = useState("");
@@ -118,8 +120,12 @@ export default function Header() {
                     onClick={() => {
                       setSearchOpen(false);
                       setQuery("");
-                      // Navigate to track section for now
-                      document.getElementById(item.trackId)?.scrollIntoView({ behavior: "smooth" });
+                      const route = TOPIC_ROUTES[item.topic];
+                      if (route) {
+                        router.push(route);
+                      } else {
+                        document.getElementById(item.trackId)?.scrollIntoView({ behavior: "smooth" });
+                      }
                     }}
                     className="search-result flex w-full items-start gap-3 px-3 py-2.5 text-left"
                   >
@@ -137,7 +143,12 @@ export default function Header() {
                     </svg>
                     <div>
                       <p className="text-xs font-medium text-platinum">{item.topic}</p>
-                      <p className="mt-0.5 text-[10px] text-muted">{item.trackName}</p>
+                      <div className="flex items-center gap-2 mt-0.5">
+                        <p className="text-[10px] text-muted">{item.trackName}</p>
+                        {TOPIC_ROUTES[item.topic] && (
+                          <span className="text-[9px] uppercase tracking-[0.12em] text-accent font-medium">Available</span>
+                        )}
+                      </div>
                     </div>
                   </button>
                 ))
@@ -248,7 +259,12 @@ export default function Header() {
                     onClick={() => {
                       setSearchOpen(false);
                       setQuery("");
-                      document.getElementById(item.trackId)?.scrollIntoView({ behavior: "smooth" });
+                      const route = TOPIC_ROUTES[item.topic];
+                      if (route) {
+                        router.push(route);
+                      } else {
+                        document.getElementById(item.trackId)?.scrollIntoView({ behavior: "smooth" });
+                      }
                     }}
                     className="search-result flex w-full items-start gap-3 py-2.5 text-left"
                   >

@@ -116,6 +116,15 @@ export const ALL_TOPICS = TRACKS.flatMap((track) =>
   track.topics.map((topic) => ({ topic, trackId: track.id, trackName: track.name }))
 );
 
+/**
+ * Maps topic names to their actual page routes.
+ * Only topics with published pages should be listed here.
+ * Used by search, track cards, and featured topics for navigation.
+ */
+export const TOPIC_ROUTES: Record<string, string> = {
+  "How the Internet Works": "/fundamentals/how-internet-works",
+};
+
 export const FEATURED_TOPICS = [
   "The Event Loop & Task Queues",
   "How Browsers Render a Page",
