@@ -7,7 +7,7 @@ import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 import DNSResolutionDiagram from "./components/DNSResolutionDiagram";
 import TCPHandshakeDiagram from "./components/TCPHandshakeDiagram";
 import OSILayerDiagram from "./components/OSILayerDiagram";
-import HTTPFlowDiagram from "./components/HTTPFlowDiagram";
+
 import PacketJourneyDiagram from "./components/PacketJourneyDiagram";
 
 /* ── Scroll reveal variant ── */
@@ -432,7 +432,9 @@ export default function HowInternetWorksPage() {
           <TCPHandshakeDiagram />
         </motion.section>
 
-        {/* ── Section 5: HTTP Request & Response ── */}
+
+
+        {/* ── Section 5: The OSI Model ── */}
         <motion.section
           variants={reveal}
           initial="hidden"
@@ -441,33 +443,7 @@ export default function HowInternetWorksPage() {
           transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
           className="mb-24"
         >
-          <SectionHeader number="05" title="HTTP Request & Response" subtitle="The language of the web" />
-
-          <div className="space-y-6 mb-10 max-w-2xl">
-            <p className="text-sm text-secondary leading-relaxed" style={{ lineHeight: "1.8" }}>
-              <strong className="text-platinum">HTTP (HyperText Transfer Protocol)</strong> defines how
-              messages are formatted and transmitted between clients and servers. Every web page load
-              involves at least one HTTP request-response cycle.
-            </p>
-            <p className="text-sm text-secondary leading-relaxed" style={{ lineHeight: "1.8" }}>
-              Explore the tabs below to understand request and response headers, HTTP methods, and
-              the meaning behind status codes you encounter daily.
-            </p>
-          </div>
-
-          <HTTPFlowDiagram />
-        </motion.section>
-
-        {/* ── Section 6: The OSI Model ── */}
-        <motion.section
-          variants={reveal}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-          className="mb-24"
-        >
-          <SectionHeader number="06" title="The OSI Model" subtitle="Understanding the 7 layers of networking" />
+          <SectionHeader number="05" title="The OSI Model" subtitle="Understanding the 7 layers of networking" />
 
           <div className="space-y-6 mb-10 max-w-2xl">
             <p className="text-sm text-secondary leading-relaxed" style={{ lineHeight: "1.8" }}>
@@ -487,7 +463,7 @@ export default function HowInternetWorksPage() {
           <OSILayerDiagram />
         </motion.section>
 
-        {/* ── Section 7: Useful Commands ── */}
+        {/* ── Section 6: Useful Commands ── */}
         <motion.section
           variants={reveal}
           initial="hidden"
@@ -496,7 +472,7 @@ export default function HowInternetWorksPage() {
           transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
           className="mb-24"
         >
-          <SectionHeader number="07" title="Useful Commands" subtitle="Terminal tools for deeper understanding" />
+          <SectionHeader number="06" title="Useful Commands" subtitle="Terminal tools for deeper understanding" />
 
           <p className="text-sm text-secondary leading-relaxed mb-10 max-w-2xl" style={{ lineHeight: "1.8" }}>
             The best way to understand networking is to experiment. These terminal commands let you
@@ -523,7 +499,7 @@ export default function HowInternetWorksPage() {
           </div>
         </motion.section>
 
-        {/* ── Section 8: Key Takeaways ── */}
+        {/* ── Section 7: Key Takeaways ── */}
         <motion.section
           variants={reveal}
           initial="hidden"
@@ -531,7 +507,7 @@ export default function HowInternetWorksPage() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
         >
-          <SectionHeader number="08" title="Key Takeaways" subtitle="The essential concepts to remember" />
+          <SectionHeader number="07" title="Key Takeaways" subtitle="The essential concepts to remember" />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-10">
             {TAKEAWAYS.map((item, i) => (

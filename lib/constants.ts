@@ -123,6 +123,7 @@ export const ALL_TOPICS = TRACKS.flatMap((track) =>
  */
 export const TOPIC_ROUTES: Record<string, string> = {
   "How the Internet Works": "/fundamentals/how-internet-works",
+  "HTTP & HTTPS Deep Dive": "/fundamentals/http-https-deep-dive",
 };
 
 export const FEATURED_TOPICS = [

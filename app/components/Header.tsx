@@ -115,22 +115,22 @@ export default function Header() {
             <div className="search-dropdown absolute left-0 right-0 top-full mt-1 max-h-[320px] overflow-y-auto border border-divider bg-surface py-1" style={{ borderRadius: "2px" }}>
               {filtered.length > 0 ? (
                 filtered.map((item) => (
-                  <button
+                  <div
                     key={`${item.trackId}-${item.topic}`}
                     onClick={() => {
+                      if (!TOPIC_ROUTES[item.topic]) return;
                       setSearchOpen(false);
                       setQuery("");
-                      const route = TOPIC_ROUTES[item.topic];
-                      if (route) {
-                        router.push(route);
-                      } else {
-                        document.getElementById(item.trackId)?.scrollIntoView({ behavior: "smooth" });
-                      }
+                      router.push(TOPIC_ROUTES[item.topic]);
                     }}
-                    className="search-result flex w-full items-start gap-3 px-3 py-2.5 text-left"
+                    className={`search-result flex w-full items-start gap-3 px-3 py-2.5 text-left ${
+                      TOPIC_ROUTES[item.topic] 
+                        ? "cursor-pointer" 
+                        : "cursor-not-allowed opacity-60 hover:bg-transparent"
+                    }`}
                   >
                     <svg
-                      className="mt-0.5 h-3.5 w-3.5 shrink-0 text-accent"
+                      className={`mt-0.5 h-3.5 w-3.5 shrink-0 ${TOPIC_ROUTES[item.topic] ? "text-accent" : "text-muted"}`}
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
@@ -145,12 +145,14 @@ export default function Header() {
                       <p className="text-xs font-medium text-platinum">{item.topic}</p>
                       <div className="flex items-center gap-2 mt-0.5">
                         <p className="text-[10px] text-muted">{item.trackName}</p>
-                        {TOPIC_ROUTES[item.topic] && (
+                        {TOPIC_ROUTES[item.topic] ? (
                           <span className="text-[9px] uppercase tracking-[0.12em] text-accent font-medium">Available</span>
+                        ) : (
+                          <span className="text-[9px] uppercase tracking-[0.12em] text-muted font-medium">Coming Soon</span>
                         )}
                       </div>
                     </div>
-                  </button>
+                  </div>
                 ))
               ) : (
                 <div className="px-3 py-4 text-center text-xs text-muted">
@@ -254,25 +256,30 @@ export default function Header() {
             <div className="mt-2 max-h-[240px] overflow-y-auto">
               {filtered.length > 0 ? (
                 filtered.map((item) => (
-                  <button
+                  <div
                     key={`mob-${item.trackId}-${item.topic}`}
                     onClick={() => {
+                      if (!TOPIC_ROUTES[item.topic]) return;
                       setSearchOpen(false);
                       setQuery("");
-                      const route = TOPIC_ROUTES[item.topic];
-                      if (route) {
-                        router.push(route);
-                      } else {
-                        document.getElementById(item.trackId)?.scrollIntoView({ behavior: "smooth" });
-                      }
+                      router.push(TOPIC_ROUTES[item.topic]);
                     }}
-                    className="search-result flex w-full items-start gap-3 py-2.5 text-left"
+                    className={`search-result flex w-full items-start gap-3 py-2.5 text-left ${
+                      TOPIC_ROUTES[item.topic] ? "" : "opacity-60"
+                    }`}
                   >
                     <div>
                       <p className="text-sm text-platinum">{item.topic}</p>
-                      <p className="text-xs text-muted">{item.trackName}</p>
+                      <div className="flex items-center gap-2">
+                        <p className="text-xs text-muted">{item.trackName}</p>
+                        {TOPIC_ROUTES[item.topic] ? (
+                          <span className="text-[9px] uppercase tracking-[0.12em] text-accent font-medium">Available</span>
+                        ) : (
+                          <span className="text-[9px] uppercase tracking-[0.12em] text-muted font-medium">Coming Soon</span>
+                        )}
+                      </div>
                     </div>
-                  </button>
+                  </div>
                 ))
               ) : (
                 <p className="py-3 text-center text-xs text-muted">
