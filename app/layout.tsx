@@ -133,6 +133,9 @@ export default function RootLayout({
                       TypeScript &amp; Tailwind CSS
                     </span>
                   </li>
+                  <li>
+                    <span className="text-sm text-secondary">Aceternity UI</span>
+                  </li>
                 </ul>
               </div>
             </div>

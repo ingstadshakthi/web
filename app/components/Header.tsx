@@ -145,10 +145,8 @@ export default function Header() {
                       <p className="text-xs font-medium text-platinum">{item.topic}</p>
                       <div className="flex items-center gap-2 mt-0.5">
                         <p className="text-[10px] text-muted">{item.trackName}</p>
-                        {TOPIC_ROUTES[item.topic] ? (
-                          <span className="text-[9px] uppercase tracking-[0.12em] text-accent font-medium">Available</span>
-                        ) : (
-                          <span className="text-[9px] uppercase tracking-[0.12em] text-muted font-medium">Coming Soon</span>
+                        {!TOPIC_ROUTES[item.topic] && (
+                          <span className="text-[9px] uppercase tracking-[0.12em] text-amber-500/90 font-medium">Coming Soon</span>
                         )}
                       </div>
                     </div>
@@ -272,10 +270,8 @@ export default function Header() {
                       <p className="text-sm text-platinum">{item.topic}</p>
                       <div className="flex items-center gap-2">
                         <p className="text-xs text-muted">{item.trackName}</p>
-                        {TOPIC_ROUTES[item.topic] ? (
-                          <span className="text-[9px] uppercase tracking-[0.12em] text-accent font-medium">Available</span>
-                        ) : (
-                          <span className="text-[9px] uppercase tracking-[0.12em] text-muted font-medium">Coming Soon</span>
+                        {!TOPIC_ROUTES[item.topic] && (
+                          <span className="text-[9px] uppercase tracking-[0.12em] text-amber-500/90 font-medium">Coming Soon</span>
                         )}
                       </div>
                     </div>

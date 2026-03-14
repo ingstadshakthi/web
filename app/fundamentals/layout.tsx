@@ -19,7 +19,7 @@ export default function FundamentalsLayout({
   return (
     <div className="min-h-screen">
       {/* ── Breadcrumb Bar ── */}
-      <div className="border-b border-divider bg-deep/80 backdrop-blur-md sticky top-16 z-30">
+      <div className="border-b border-divider bg-deep/80 backdrop-blur-md relative z-30">
         <div className="mx-auto max-w-6xl px-6 py-3 flex items-center gap-2 text-xs">
           <Link
             href="/"
