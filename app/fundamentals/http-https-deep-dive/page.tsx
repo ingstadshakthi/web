@@ -192,7 +192,7 @@ export default function HTTPHTTPSDeepDivePage() {
           MAIN CONTENT — with Tracing Beam
           ═══════════════════════════════════════════════════════ */}
       <TracingBeam className="px-6 py-16 md:py-24">
-        
+
         {/* ── Section 1: The HTTP Protocol ── */}
         <motion.section
           variants={reveal}
@@ -209,31 +209,31 @@ export default function HTTPHTTPSDeepDivePage() {
           </p>
 
           <ul className="list-disc text-sm text-secondary leading-relaxed pl-5 mb-10 max-w-2xl space-y-2" style={{ lineHeight: "1.8" }}>
-              <li><strong className="text-platinum">You (The Client)</strong> send a <span className="font-mono text-accent text-xs">Request</span> (e.g., &quot;I want a coffee.&quot;).</li>
-              <li><strong className="text-platinum">The Barista (The Server)</strong> processes it and returns a <span className="font-mono text-accent text-xs">Response</span> (e.g., &quot;Here is your coffee.&quot;).</li>
-              <li>Crucially, HTTP is <strong className="text-platinum">Stateless</strong>. Next time you walk up to order, the barista has amnesia and doesn&apos;t remember you. Developers must use side-channels like <strong className="text-platinum">Cookies</strong> or <strong className="text-platinum">Tokens</strong> to give the server memory about your session.</li>
+            <li><strong className="text-platinum">You (The Client)</strong> send a <span className="font-mono text-accent text-xs">Request</span> (e.g., &quot;I want a coffee.&quot;).</li>
+            <li><strong className="text-platinum">The Barista (The Server)</strong> processes it and returns a <span className="font-mono text-accent text-xs">Response</span> (e.g., &quot;Here is your coffee.&quot;).</li>
+            <li>Crucially, HTTP is <strong className="text-platinum">Stateless</strong>. Next time you walk up to order, the barista has amnesia and doesn&apos;t remember you. Developers must use side-channels like <strong className="text-platinum">Cookies</strong> or <strong className="text-platinum">Tokens</strong> to give the server memory about your session.</li>
           </ul>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10 mb-8 max-w-4xl">
-              <div className="p-5 border border-divider bg-surface/30">
-                  <h4 className="text-platinum text-sm font-semibold mb-3">HTTP Verbs (Methods)</h4>
-                  <p className="text-xs text-secondary leading-relaxed mb-3">The verb defines the <i>intent</i> of the request:</p>
-                  <ul className="space-y-2 font-mono text-[11px]">
-                      <li><span className="text-emerald-400 font-bold w-12 inline-block">GET</span> Read a resource (No body allowed).</li>
-                      <li><span className="text-blue-400 font-bold w-12 inline-block">POST</span> Create a new resource.</li>
-                      <li><span className="text-amber-500 font-bold w-12 inline-block">PUT</span> Replace a resource entirely.</li>
-                      <li><span className="text-purple-400 font-bold w-12 inline-block">PATCH</span> Update a resource partially.</li>
-                      <li><span className="text-rose-500 font-bold w-12 inline-block">DELETE</span> Remove a resource.</li>
-                  </ul>
-              </div>
-              <div className="p-5 border border-divider bg-surface/30">
-                  <h4 className="text-platinum text-sm font-semibold mb-3">The Cost of Statelessness</h4>
-                  <p className="text-xs text-secondary leading-relaxed mb-3" style={{ lineHeight: "1.7" }}>
-                  Because HTTP is stateless, the server doesn&apos;t need to keep open connections or track memory for millions of users natively, making the web massively <strong className="text-platinum">scalable</strong>.
-                  <br/><br/>
-                  However, the tradeoff is overhead: every single request to a secure API must contain the full Authentication token (like a JWT) in its headers. If a JWT is large, sending it on every request wastes bandwidth. This is why headers are compressed in modern HTTP/2 and HTTP/3.
-                  </p>
-              </div>
+            <div className="p-5 border border-divider bg-surface/30">
+              <h4 className="text-platinum text-sm font-semibold mb-3">HTTP Verbs (Methods)</h4>
+              <p className="text-xs text-secondary leading-relaxed mb-3">The verb defines the <i>intent</i> of the request:</p>
+              <ul className="space-y-2 font-mono text-[11px]">
+                <li><span className="text-emerald-400 font-bold w-12 inline-block">GET</span> Read a resource (No body allowed).</li>
+                <li><span className="text-blue-400 font-bold w-12 inline-block">POST</span> Create a new resource.</li>
+                <li><span className="text-amber-500 font-bold w-12 inline-block">PUT</span> Replace a resource entirely.</li>
+                <li><span className="text-purple-400 font-bold w-12 inline-block">PATCH</span> Update a resource partially.</li>
+                <li><span className="text-rose-500 font-bold w-12 inline-block">DELETE</span> Remove a resource.</li>
+              </ul>
+            </div>
+            <div className="p-5 border border-divider bg-surface/30">
+              <h4 className="text-platinum text-sm font-semibold mb-3">The Cost of Statelessness</h4>
+              <p className="text-xs text-secondary leading-relaxed mb-3" style={{ lineHeight: "1.7" }}>
+                Because HTTP is stateless, the server doesn&apos;t need to keep open connections or track memory for millions of users natively, making the web massively <strong className="text-platinum">scalable</strong>.
+                <br /><br />
+                However, the tradeoff is overhead: every single request to a secure API must contain the full Authentication token (like a JWT) in its headers. If a JWT is large, sending it on every request wastes bandwidth. This is why headers are compressed in modern HTTP/2 and HTTP/3.
+              </p>
+            </div>
           </div>
         </motion.section>
 
@@ -293,18 +293,18 @@ export default function HTTPHTTPSDeepDivePage() {
             <p className="text-sm text-secondary leading-relaxed" style={{ lineHeight: "1.8" }}>
               <strong className="text-platinum">HTTPS (HTTP Secure)</strong> solves this. It isn&apos;t a new protocol, it&apos;s just HTTP routed inside a secure, encrypted tunnel called <strong className="text-platinum">TLS (Transport Layer Security)</strong>.
             </p>
-            
+
             <div className="p-5 border-l-2 border-accent bg-accent/5 my-6">
-                <h5 className="text-platinum text-xs font-bold uppercase tracking-widest mb-2">The Cryptography Dance</h5>
-                <p className="text-xs text-secondary leading-relaxed" style={{ lineHeight: "1.7" }}>
-                  Encryption is mathematically expensive. 
-                  <strong className="text-platinum"> Asymmetric Encryption</strong> (like RSA or ECC) uses two keys: a Public key to lock data, and a Private key to unlock it. It is incredibly secure but very slow.
-                  <strong className="text-platinum"> Symmetric Encryption</strong> (like AES) uses one key to both lock and unlock. It is incredibly fast, but if anyone intercepts the key while you share it, the system is broken.
-                  <br/><br/>
-                  TLS beautifully combines both: It uses the slow Asymmetric method <i>just once</i> during the handshake to securely exchange a temporary Symmetric "Session Key" over the open internet. Once they both safely have the Session Key, they switch to high-speed Symmetric encryption for the rest of the HTTP requests.
-                </p>
+              <h5 className="text-platinum text-xs font-bold uppercase tracking-widest mb-2">The Cryptography Dance</h5>
+              <p className="text-xs text-secondary leading-relaxed" style={{ lineHeight: "1.7" }}>
+                Encryption is mathematically expensive.
+                <strong className="text-platinum"> Asymmetric Encryption</strong> (like RSA or ECC) uses two keys: a Public key to lock data, and a Private key to unlock it. It is incredibly secure but very slow.
+                <strong className="text-platinum"> Symmetric Encryption</strong> (like AES) uses one key to both lock and unlock. It is incredibly fast, but if anyone intercepts the key while you share it, the system is broken.
+                <br /><br />
+                TLS beautifully combines both: It uses the slow Asymmetric method <i>just once</i> during the handshake to securely exchange a temporary Symmetric &quot;Session Key&quot; over the open internet. Once they both safely have the Session Key, they switch to high-speed Symmetric encryption for the rest of the HTTP requests.
+              </p>
             </div>
-            
+
             <p className="text-sm text-secondary leading-relaxed" style={{ lineHeight: "1.8" }}>
               Step through the modern TLS 1.3 Handshake below to see how they safely agree on a secret key without anyone else intercepting it, utilizing 1-RTT (One Round Trip Time).
             </p>
@@ -399,7 +399,7 @@ export default function HTTPHTTPSDeepDivePage() {
           ═══════════════════════════════════════════════════════ */}
       <section className="px-6 py-16 md:py-20">
         <div className="mx-auto max-w-4xl flex items-center justify-between flex-wrap gap-4">
-          <Link 
+          <Link
             href="/fundamentals/how-internet-works"
             className="group flex flex-col items-start px-5 py-3 border border-divider text-platinum hover:border-accent/40 hover:bg-surface/20 min-w-[200px]"
             style={{
@@ -413,7 +413,7 @@ export default function HTTPHTTPSDeepDivePage() {
 
           {/* Placeholder for future next topic, or disable if it's the last one for now */}
           <div className="text-sm text-muted italic text-right">
-             End of current module. Next topics coming soon.
+            End of current module. Next topics coming soon.
           </div>
         </div>
       </section>

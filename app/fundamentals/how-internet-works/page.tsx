@@ -45,7 +45,7 @@ const URL_JOURNEY_DATA = [
         </h4>
         <p className="text-sm text-secondary leading-relaxed" style={{ lineHeight: "1.8" }}>
           The browser needs to find the IP address behind the domain name. It checks the browser
-          cache → OS cache → router cache → ISP's DNS resolver. If none have it cached, a full
+          cache → OS cache → router cache → ISP&apos;s DNS resolver. If none have it cached, a full
           recursive DNS lookup begins through root servers, TLD servers, and authoritative servers.
         </p>
       </div>

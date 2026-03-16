@@ -1,15 +1,5 @@
 import Link from "next/link";
 
-/* ── Topic navigation data (will grow as we add topics) ── */
-const FUNDAMENTALS_TOPICS = [
-  {
-    slug: "how-internet-works",
-    title: "How the Internet Works",
-  },
-  // Future topics will be added here:
-  // { slug: "http-https-deep-dive", title: "HTTP & HTTPS Deep Dive" },
-  // { slug: "semantic-html-accessibility", title: "Semantic HTML & Accessibility" },
-];
 
 export default function FundamentalsLayout({
   children,
