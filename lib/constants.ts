@@ -109,6 +109,23 @@ export const TRACKS = [
       "Build Tools, Bundlers & Tree Shaking",
     ],
   },
+  {
+    id: "frontend-testing",
+    name: "Frontend Testing",
+    description:
+      "Unit, integration, and end-to-end testing strategies, mocking, test-driven development, performance testing, A/B experimentation, and CI/CD pipeline integration.",
+    topicCount: 8,
+    topics: [
+      "Unit Testing with Vitest & Jest",
+      "Component Testing with Testing Library",
+      "Integration Testing Strategies",
+      "End-to-End Testing with Playwright",
+      "Performance & Load Testing",
+      "A/B Testing & Experimentation",
+      "Test-Driven Development (TDD)",
+      "Testing in CI/CD Pipelines",
+    ],
+  },
 ] as const;
 
 /** Flat list of ALL topic names across all tracks — used by search */
@@ -135,15 +152,15 @@ export const FEATURED_TOPICS = [
   "Component Design & Composition Patterns",
   "Reflow vs Repaint",
   "State Management Strategies",
+  "End-to-End Testing with Playwright",
   "Frontend Security (XSS, CSRF, Clickjacking)",
   "Rendering Patterns (CSR, SSR, SSG, ISR)",
-  "Critical Rendering Path Optimization",
-  "Micro-Frontends Architecture",
+  "Unit Testing with Vitest & Jest",
 ] as const;
 
 export const STATS = [
-  { value: 43, suffix: "", label: "Topics" },
-  { value: 6, suffix: "", label: "Learning Tracks" },
+  { value: 51, suffix: "", label: "Topics" },
+  { value: 7, suffix: "", label: "Learning Tracks" },
   { value: 100, suffix: "%", label: "Frontend Focused" },
 ] as const;
 

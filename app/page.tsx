@@ -53,6 +53,12 @@ const TRACK_ICONS: Record<string, React.ReactNode> = {
       <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
     </svg>
   ),
+  "frontend-testing": (
+    <svg className="h-7 w-7 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M9 11l3 3L22 4" />
+      <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" />
+    </svg>
+  ),
 };
 
 /* ── Value Prop Icons ── */
@@ -399,7 +405,7 @@ export default function Home() {
               Begin Your Journey Today
             </h2>
             <p className="mx-auto mt-6 max-w-md text-secondary">
-              Explore 43 deep-dive topics across 6 structured learning
+              Explore 51 deep-dive topics across 7 structured learning
               tracks — all framework-agnostic and free.
             </p>
             <div className="mt-10">
