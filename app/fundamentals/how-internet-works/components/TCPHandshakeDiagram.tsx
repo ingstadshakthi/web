@@ -21,22 +21,22 @@ const HANDSHAKE_STEPS: HandshakeStep[] = [
     label: "SYN",
     direction: "right",
     description:
-      "The client initiates the connection by sending a SYN (synchronize) packet. This packet contains a random sequence number (ISN — Initial Sequence Number) which will be used to track and order data throughout the connection.",
+      "The client initiates the connection by sending a SYN (synchronize) packet. This packet contains a random sequence number (the Initial Sequence Number) which will be used to track and order data throughout the connection.",
     color: "#B0C4DE",
     technical: "Flags: SYN=1, ACK=0 | Seq=1000 (random ISN) | Window Size=65535",
-    detail: "The SYN flag tells the server that the client wants to establish a new connection. The random ISN prevents old duplicate packets from interfering with new connections — a security and reliability measure.",
-    analogy: "Like raising your hand in class and saying \"I want to talk to you\" — you're expressing intent to communicate.",
+    detail: "The SYN flag tells the server that the client wants to establish a new connection. The random ISN prevents old duplicate packets from interfering with new connections, which is a security and reliability measure.",
+    analogy: "Like raising your hand in class and saying 'I want to talk to you'. You're expressing intent to communicate.",
   },
   {
     id: "syn-ack",
     label: "SYN-ACK",
     direction: "left",
     description:
-      "The server responds with a SYN-ACK packet — simultaneously acknowledging the client's SYN and sending its own SYN with a random sequence number. The ACK number is the client's ISN + 1, confirming receipt.",
+      "The server responds with a SYN-ACK packet, simultaneously acknowledging the client's SYN and sending its own SYN with a random sequence number. The ACK number is the client's ISN + 1, confirming receipt.",
     color: "#9CA3AF",
     technical: "Flags: SYN=1, ACK=1 | Seq=5000 (server's ISN) | Ack=1001 (client's ISN + 1)",
     detail: "The server sends both SYN and ACK flags combined in a single packet for efficiency. The acknowledgment number (1001) tells the client: \"I received your sequence 1000 and expect 1001 next.\"",
-    analogy: "The teacher says \"I see your hand, and I'm ready to listen\" — acknowledging you AND signaling readiness.",
+    analogy: "The teacher says 'I see your hand, and I'm ready to listen', acknowledging you and signaling readiness.",
   },
   {
     id: "ack",
@@ -47,7 +47,7 @@ const HANDSHAKE_STEPS: HandshakeStep[] = [
     color: "#B0C4DE",
     technical: "Flags: SYN=0, ACK=1 | Seq=1001 | Ack=5001 (server's ISN + 1)",
     detail: "After this packet, the connection enters the ESTABLISHED state on both sides. This packet can actually carry data payload already (TCP Fast Open can skip this step for repeat connections).",
-    analogy: "You nod and start talking — both parties have confirmed they can hear each other. The conversation begins.",
+    analogy: "You nod and start talking. Both parties have confirmed they can hear each other. The conversation begins.",
   },
 ];
 
@@ -317,7 +317,7 @@ export default function TCPHandshakeDiagram() {
       {/* TCP vs UDP comparison */}
       <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="p-5 border border-divider" style={{ borderRadius: "2px" }}>
-          <h4 className="text-sm font-medium text-platinum mb-2">TCP — Reliable</h4>
+          <h4 className="text-sm font-medium text-platinum mb-2">TCP (Reliable)</h4>
           <ul className="space-y-1.5 text-xs text-secondary" style={{ lineHeight: "1.7" }}>
             <li className="flex items-start gap-2"><span className="text-accent mt-0.5">•</span> Connection-oriented (handshake required)</li>
             <li className="flex items-start gap-2"><span className="text-accent mt-0.5">•</span> Guaranteed delivery & ordering</li>
@@ -326,10 +326,10 @@ export default function TCPHandshakeDiagram() {
           </ul>
         </div>
         <div className="p-5 border border-divider" style={{ borderRadius: "2px" }}>
-          <h4 className="text-sm font-medium text-platinum mb-2">UDP — Fast</h4>
+          <h4 className="text-sm font-medium text-platinum mb-2">UDP (Fast)</h4>
           <ul className="space-y-1.5 text-xs text-secondary" style={{ lineHeight: "1.7" }}>
             <li className="flex items-start gap-2"><span className="text-muted mt-0.5">•</span> Connectionless (no handshake)</li>
-            <li className="flex items-start gap-2"><span className="text-muted mt-0.5">•</span> No delivery guarantee — fire and forget</li>
+            <li className="flex items-start gap-2"><span className="text-muted mt-0.5">•</span> No delivery guarantee. Fire and forget.</li>
             <li className="flex items-start gap-2"><span className="text-muted mt-0.5">•</span> Lower latency, less overhead</li>
             <li className="flex items-start gap-2"><span className="text-muted mt-0.5">•</span> Used by: DNS, video streaming, gaming, VoIP</li>
           </ul>

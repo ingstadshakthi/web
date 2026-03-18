@@ -412,9 +412,17 @@ export default function HTTPHTTPSDeepDivePage() {
           </Link>
 
           {/* Placeholder for future next topic, or disable if it's the last one for now */}
-          <div className="text-sm text-muted italic text-right">
-            End of current module. Next topics coming soon.
-          </div>
+          <Link
+            href="/testing/ab-testing-experimentation"
+            className="group flex flex-col items-end px-5 py-3 border border-divider text-platinum hover:border-accent/40 hover:bg-surface/20 min-w-[200px]"
+            style={{
+              borderRadius: "2px",
+              transition: "all 400ms cubic-bezier(0.25, 0.1, 0.25, 1)",
+            }}
+          >
+            <span className="text-[10px] text-muted uppercase tracking-widest mb-1 group-hover:text-accent transition-colors">Next →</span>
+            <span className="text-sm font-medium">A/B Testing &amp; Experimentation</span>
+          </Link>
         </div>
       </section>
     </>
