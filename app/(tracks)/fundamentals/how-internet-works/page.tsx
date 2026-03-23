@@ -541,29 +541,6 @@ export default function HowInternetWorksPage() {
         </motion.section>
       </TracingBeam>
 
-      {/* Divider */}
-      <div className="section-glow-divider" aria-hidden="true" />
-
-      {/* ═══════════════════════════════════════════════════════
-          TOPIC NAVIGATION (Prev / Next)
-          ═══════════════════════════════════════════════════════ */}
-      <section className="px-6 py-16 md:py-20">
-        <div className="mx-auto max-w-4xl flex items-center justify-between">
-          <div className="text-sm text-muted">
-            ← Previous topic
-          </div>
-          <a
-            href="/fundamentals/how-internet-works"
-            className="px-5 py-2.5 text-sm font-medium border border-divider text-platinum hover:border-accent/40 hover:text-accent"
-            style={{
-              borderRadius: "2px",
-              transition: "all 400ms cubic-bezier(0.25, 0.1, 0.25, 1)",
-            }}
-          >
-            Next: HTTP & HTTPS Deep Dive →
-          </a>
-        </div>
-      </section>
     </>
   );
 }

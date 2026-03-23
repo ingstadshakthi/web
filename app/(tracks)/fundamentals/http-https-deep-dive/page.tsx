@@ -391,40 +391,6 @@ export default function HTTPHTTPSDeepDivePage() {
         </motion.section>
       </TracingBeam>
 
-      {/* Divider */}
-      <div className="section-glow-divider" aria-hidden="true" />
-
-      {/* ═══════════════════════════════════════════════════════
-          TOPIC NAVIGATION (Prev / Next)
-          ═══════════════════════════════════════════════════════ */}
-      <section className="px-6 py-16 md:py-20">
-        <div className="mx-auto max-w-4xl flex items-center justify-between flex-wrap gap-4">
-          <Link
-            href="/fundamentals/how-internet-works"
-            className="group flex flex-col items-start px-5 py-3 border border-divider text-platinum hover:border-accent/40 hover:bg-surface/20 min-w-[200px]"
-            style={{
-              borderRadius: "2px",
-              transition: "all 400ms cubic-bezier(0.25, 0.1, 0.25, 1)",
-            }}
-          >
-            <span className="text-[10px] text-muted uppercase tracking-widest mb-1 group-hover:text-accent transition-colors">← Previous</span>
-            <span className="text-sm font-medium">How the Internet Works</span>
-          </Link>
-
-          {/* Placeholder for future next topic, or disable if it's the last one for now */}
-          <Link
-            href="/testing/ab-testing-experimentation"
-            className="group flex flex-col items-end px-5 py-3 border border-divider text-platinum hover:border-accent/40 hover:bg-surface/20 min-w-[200px]"
-            style={{
-              borderRadius: "2px",
-              transition: "all 400ms cubic-bezier(0.25, 0.1, 0.25, 1)",
-            }}
-          >
-            <span className="text-[10px] text-muted uppercase tracking-widest mb-1 group-hover:text-accent transition-colors">Next →</span>
-            <span className="text-sm font-medium">A/B Testing &amp; Experimentation</span>
-          </Link>
-        </div>
-      </section>
     </>
   );
 }
