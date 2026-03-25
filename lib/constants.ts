@@ -17,14 +17,15 @@ export const TRACKS = [
     name: "Web Fundamentals",
     description:
       "How the internet works, DNS resolution, HTTP protocol, semantic HTML, forms, accessibility attributes, and SEO foundations.",
-    topicCount: 6,
+    topicCount: 7,
     topics: [
       "How the Internet Works",
       "HTTP & HTTPS Deep Dive",
-      "Semantic HTML & Accessibility",
+      "Semantic HTML",
       "HTML Forms & Validation",
       "SEO Fundamentals",
       "Web Standards & Specifications",
+      "Web Accessibility",
     ],
   },
   {
