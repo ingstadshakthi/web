@@ -143,6 +143,7 @@ export const TOPIC_ROUTES: Record<string, string> = {
   "How the Internet Works": "/fundamentals/how-internet-works",
   "HTTP & HTTPS Deep Dive": "/fundamentals/http-https-deep-dive",
   "A/B Testing & Experimentation": "/testing/ab-testing-experimentation",
+  "Semantic HTML": "/fundamentals/semantic-html",
 };
 
 export const FEATURED_TOPICS = [
