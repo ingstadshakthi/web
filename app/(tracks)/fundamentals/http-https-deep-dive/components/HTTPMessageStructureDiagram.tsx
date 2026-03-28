@@ -20,13 +20,24 @@ const REQUEST_PARTS: MessagePart[] = [
       <div className="space-y-2 font-mono text-sm">
         <div className="flex flex-wrap gap-2 items-center text-platinum p-3 bg-surface/50 border border-divider/50 rounded-sm">
           <span className="text-accent font-bold">GET</span>
-          <span className="text-muted-foreground mr-2">/api/v1/users?status=active</span>
+          <span className="text-muted-foreground mr-2">
+            /api/v1/users?status=active
+          </span>
           <span className="text-[#8892b0]">HTTP/1.1</span>
         </div>
-        <div className="text-xs text-secondary pl-2 grid grid-cols-[1fr_2fr_1fr] gap-4">
-          <div><span className="text-accent">Method:</span> The action (GET, POST, PUT, DELETE, etc.)</div>
-          <div><span className="text-platinum">Target (Path + Query):</span> The resource being requested.</div>
-          <div><span className="text-[#8892b0]">Version:</span> The HTTP protocol version.</div>
+        <div className="text-xs text-secondary pl-2 grid grid-cols-1 sm:grid-cols-[1fr_2fr_1fr] gap-2 sm:gap-4">
+          <div>
+            <span className="text-accent">Method:</span> The action (GET, POST,
+            PUT, DELETE, etc.)
+          </div>
+          <div>
+            <span className="text-platinum">Target (Path + Query):</span> The
+            resource being requested.
+          </div>
+          <div>
+            <span className="text-[#8892b0]">Version:</span> The HTTP protocol
+            version.
+          </div>
         </div>
       </div>
     ),
@@ -34,20 +45,38 @@ const REQUEST_PARTS: MessagePart[] = [
   {
     id: "request-headers",
     title: "2. Headers",
-    description: "Key-value pairs containing metadata about the request or client.",
+    description:
+      "Key-value pairs containing metadata about the request or client.",
     content: (
       <div className="space-y-1 font-mono text-sm bg-surface/50 p-3 border border-divider/50 rounded-sm">
-        <div className="flex gap-4"><span className="text-accent min-w-[120px]">Host:</span><span className="text-platinum truncate">api.example.com</span></div>
-        <div className="flex gap-4"><span className="text-accent min-w-[120px]">User-Agent:</span><span className="text-platinum truncate">Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)...</span></div>
-        <div className="flex gap-4"><span className="text-accent min-w-[120px]">Accept:</span><span className="text-platinum truncate">application/json</span></div>
-        <div className="flex gap-4"><span className="text-accent min-w-[120px]">Authorization:</span><span className="text-platinum truncate">Bearer eyJhbGciOiJIUzI1NiIs...</span></div>
+        <div className="flex gap-4">
+          <span className="text-accent min-w-[120px]">Host:</span>
+          <span className="text-platinum truncate">api.example.com</span>
+        </div>
+        <div className="flex gap-4">
+          <span className="text-accent min-w-[120px]">User-Agent:</span>
+          <span className="text-platinum truncate">
+            Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)...
+          </span>
+        </div>
+        <div className="flex gap-4">
+          <span className="text-accent min-w-[120px]">Accept:</span>
+          <span className="text-platinum truncate">application/json</span>
+        </div>
+        <div className="flex gap-4">
+          <span className="text-accent min-w-[120px]">Authorization:</span>
+          <span className="text-platinum truncate">
+            Bearer eyJhbGciOiJIUzI1NiIs...
+          </span>
+        </div>
       </div>
     ),
   },
   {
     id: "request-empty-line",
     title: "3. Empty Line",
-    description: "A crucial blank line (CRLF) that signals the end of the headers.",
+    description:
+      "A crucial blank line (CRLF) that signals the end of the headers.",
     content: (
       <div className="bg-surface/20 border border-dashed border-divider p-2 text-center text-xs font-mono text-muted rounded-sm">
         \r\n (Carriage Return + Line Feed)
@@ -57,7 +86,8 @@ const REQUEST_PARTS: MessagePart[] = [
   {
     id: "request-body",
     title: "4. Body (Optional)",
-    description: "The data payload. Usually empty for GET requests, but crucial for POST/PUT.",
+    description:
+      "The data payload. Usually empty for GET requests, but crucial for POST/PUT.",
     content: (
       <div className="font-mono text-sm bg-surface/50 p-3 border border-divider/50 text-muted rounded-sm">
         {`{
@@ -90,10 +120,22 @@ const RESPONSE_PARTS: MessagePart[] = [
     description: "Metadata about the response and the server.",
     content: (
       <div className="space-y-1 font-mono text-sm bg-surface/50 p-3 border border-divider/50 rounded-sm">
-        <div className="flex gap-4"><span className="text-accent min-w-[140px]">Date:</span><span className="text-platinum">Wed, 21 Oct 2026 07:28:00 GMT</span></div>
-        <div className="flex gap-4"><span className="text-accent min-w-[140px]">Content-Type:</span><span className="text-platinum">application/json; charset=utf-8</span></div>
-        <div className="flex gap-4"><span className="text-accent min-w-[140px]">Content-Length:</span><span className="text-platinum">142</span></div>
-        <div className="flex gap-4"><span className="text-accent min-w-[140px]">Cache-Control:</span><span className="text-platinum">max-age=3600</span></div>
+        <div className="flex gap-4">
+          <span className="text-accent min-w-[140px]">Date:</span>
+          <span className="text-platinum">Wed, 21 Oct 2026 07:28:00 GMT</span>
+        </div>
+        <div className="flex gap-4">
+          <span className="text-accent min-w-[140px]">Content-Type:</span>
+          <span className="text-platinum">application/json; charset=utf-8</span>
+        </div>
+        <div className="flex gap-4">
+          <span className="text-accent min-w-[140px]">Content-Length:</span>
+          <span className="text-platinum">142</span>
+        </div>
+        <div className="flex gap-4">
+          <span className="text-accent min-w-[140px]">Cache-Control:</span>
+          <span className="text-platinum">max-age=3600</span>
+        </div>
       </div>
     ),
   },
@@ -144,7 +186,9 @@ export default function HTTPMessageStructureDiagram() {
           }}
           className={cn(
             "flex-1 py-4 px-6 text-sm font-medium transition-colors relative",
-            activeTab === "request" ? "text-platinum bg-surface/30" : "text-muted hover:text-secondary hover:bg-surface/10"
+            activeTab === "request"
+              ? "text-platinum bg-surface/30"
+              : "text-muted hover:text-secondary hover:bg-surface/10",
           )}
         >
           HTTP Request (Client)
@@ -162,7 +206,9 @@ export default function HTTPMessageStructureDiagram() {
           }}
           className={cn(
             "flex-1 py-4 px-6 text-sm font-medium transition-colors relative border-l border-divider",
-            activeTab === "response" ? "text-platinum bg-surface/30" : "text-muted hover:text-secondary hover:bg-surface/10"
+            activeTab === "response"
+              ? "text-platinum bg-surface/30"
+              : "text-muted hover:text-secondary hover:bg-surface/10",
           )}
         >
           HTTP Response (Server)
@@ -189,16 +235,21 @@ export default function HTTPMessageStructureDiagram() {
                 "text-left p-4 border transition-all duration-300 rounded-[2px] relative",
                 activePart === part.id
                   ? "border-accent/50 bg-[#282A2D]"
-                  : "border-divider/50 bg-[#1A1C1E] hover:border-divider-hover hover:bg-surface/30"
+                  : "border-divider/50 bg-[#1A1C1E] hover:border-divider-hover hover:bg-surface/30",
               )}
             >
-              <h3 className={cn("font-semibold text-sm", activePart === part.id ? "text-platinum" : "text-secondary")}>
+              <h3
+                className={cn(
+                  "font-semibold text-sm",
+                  activePart === part.id ? "text-platinum" : "text-secondary",
+                )}
+              >
                 {part.title}
               </h3>
               <p className="text-xs text-muted mt-1 leading-relaxed">
                 {part.description}
               </p>
-              
+
               {activePart === part.id && (
                 <motion.div
                   layoutId="part-indicator"
@@ -212,9 +263,12 @@ export default function HTTPMessageStructureDiagram() {
         {/* Right Column: Code Detail View */}
         <div className="bg-[#15171a] border border-[#282a2d] rounded-[2px] p-6 min-h-[400px] flex flex-col relative overflow-hidden">
           <p className="text-xs font-medium text-muted uppercase tracking-widest mb-6 border-b border-[#282a2d] pb-2">
-            Inspecting: {activePart ? parts.find(p => p.id === activePart)?.title : "Raw Output Overview"}
+            Inspecting:{" "}
+            {activePart
+              ? parts.find((p) => p.id === activePart)?.title
+              : "Raw Output Overview"}
           </p>
-          
+
           <div className="flex-1 relative">
             <AnimatePresence mode="wait">
               {activePart ? (
@@ -236,7 +290,7 @@ export default function HTTPMessageStructureDiagram() {
                   exit={{ opacity: 0 }}
                   className="text-xs text-muted font-mono h-full flex items-center justify-center opacity-50"
                 >
-                   &lt;-- Select a structural component to inspect its anatomy
+                  &lt;-- Select a structural component to inspect its anatomy
                 </motion.div>
               )}
             </AnimatePresence>

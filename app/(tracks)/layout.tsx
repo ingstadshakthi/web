@@ -9,9 +9,7 @@ export default function TracksLayout({
   return (
     <div className="min-h-screen flex flex-col">
       <DynamicBreadcrumb />
-      <main className="flex-1 text-platinum flex flex-col">
-        {children}
-      </main>
+      <div className="flex-1 text-platinum flex flex-col">{children}</div>
       <TopicNavigation />
     </div>
   );

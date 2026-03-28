@@ -6,9 +6,9 @@ export const SITE_CONFIG = {
 };
 
 export const NAV_LINKS = [
-  { label: "Tracks", href: "#tracks" },
-  { label: "Topics", href: "#topics" },
-  { label: "About", href: "#about" },
+  { label: "Tracks", href: "/#tracks" },
+  { label: "Topics", href: "/#topics" },
+  { label: "About", href: "/#about" },
 ] as const;
 
 export const TRACKS = [
@@ -131,7 +131,11 @@ export const TRACKS = [
 
 /** Flat list of ALL topic names across all tracks — used by search */
 export const ALL_TOPICS = TRACKS.flatMap((track) =>
-  track.topics.map((topic) => ({ topic, trackId: track.id, trackName: track.name }))
+  track.topics.map((topic) => ({
+    topic,
+    trackId: track.id,
+    trackName: track.name,
+  })),
 );
 
 /**
@@ -144,6 +148,7 @@ export const TOPIC_ROUTES: Record<string, string> = {
   "HTTP & HTTPS Deep Dive": "/fundamentals/http-https-deep-dive",
   "A/B Testing & Experimentation": "/testing/ab-testing-experimentation",
   "Semantic HTML": "/fundamentals/semantic-html",
+  "Execution Context & Hoisting": "/javascript/execution-context-hoisting",
 };
 
 export const FEATURED_TOPICS = [

@@ -10,44 +10,44 @@
    ═══════════════════════════════════════════════════════════ */
 
 :root {
-  --bg-deep: #1A1C1E;
-  --bg-surface: #282A2D;
-  --bg-elevated: #32353A;
-  --accent: #B0C4DE;
-  --platinum: #F8F9FA;
-  --secondary: #9CA3AF;
-  --muted: #6B7280;
+  --bg-deep: #1a1c1e;
+  --bg-surface: #282a2d;
+  --bg-elevated: #32353a;
+  --accent: #b0c4de;
+  --platinum: #f8f9fa;
+  --secondary: #9ca3af;
+  --muted: #6b7280;
   --divider: rgba(255, 255, 255, 0.12);
   --divider-hover: rgba(255, 255, 255, 0.22);
   --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
 
   /* shadcn tokens — overridden for dark-first theme */
-  --background: #1A1C1E;
-  --foreground: #F8F9FA;
-  --card: #282A2D;
-  --card-foreground: #F8F9FA;
-  --popover: #282A2D;
-  --popover-foreground: #F8F9FA;
-  --primary: #B0C4DE;
-  --primary-foreground: #1A1C1E;
-  --secondary-foreground: #F8F9FA;
-  --muted-foreground: #6B7280;
-  --accent-foreground: #1A1C1E;
+  --background: #1a1c1e;
+  --foreground: #f8f9fa;
+  --card: #282a2d;
+  --card-foreground: #f8f9fa;
+  --popover: #282a2d;
+  --popover-foreground: #f8f9fa;
+  --primary: #b0c4de;
+  --primary-foreground: #1a1c1e;
+  --secondary-foreground: #f8f9fa;
+  --muted-foreground: #6b7280;
+  --accent-foreground: #1a1c1e;
   --destructive: oklch(0.58 0.22 27);
   --border: rgba(255, 255, 255, 0.12);
   --input: rgba(255, 255, 255, 0.15);
-  --ring: #B0C4DE;
+  --ring: #b0c4de;
   --radius: 2px;
 }
 
 @theme inline {
-  --color-deep: #1A1C1E;
-  --color-surface: #282A2D;
-  --color-elevated: #32353A;
-  --color-accent: #B0C4DE;
-  --color-platinum: #F8F9FA;
-  --color-secondary: #9CA3AF;
-  --color-muted: #6B7280;
+  --color-deep: #1a1c1e;
+  --color-surface: #282a2d;
+  --color-elevated: #32353a;
+  --color-accent: #b0c4de;
+  --color-platinum: #f8f9fa;
+  --color-secondary: #9ca3af;
+  --color-muted: #6b7280;
   --color-divider: rgba(255, 255, 255, 0.12);
   --color-divider-hover: rgba(255, 255, 255, 0.22);
   --font-heading: var(--font-playfair);
@@ -83,7 +83,7 @@ html {
 body {
   background: var(--bg-deep);
   color: var(--platinum);
-  font-family: var(--font-body, 'Inter', ui-sans-serif, system-ui, sans-serif);
+  font-family: var(--font-body, "Inter", ui-sans-serif, system-ui, sans-serif);
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -92,7 +92,7 @@ body {
 /* ── Selection ── */
 ::selection {
   background: rgba(176, 196, 222, 0.25);
-  color: #F8F9FA;
+  color: #f8f9fa;
 }
 
 /* ── Keyframes ── */
@@ -108,13 +108,21 @@ body {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
 }
 
 /* ── Animation Utilities ── */
@@ -148,7 +156,10 @@ body {
   background: var(--bg-surface);
   border: 1px solid var(--divider);
   border-radius: 2px;
-  transition: border-color 400ms var(--ease), box-shadow 400ms var(--ease), transform 400ms var(--ease);
+  transition:
+    border-color 400ms var(--ease),
+    box-shadow 400ms var(--ease),
+    transform 400ms var(--ease);
 }
 
 .track-card:hover {
@@ -166,7 +177,10 @@ body {
   font-size: 0.8125rem;
   color: var(--secondary);
   white-space: nowrap;
-  transition: color 300ms var(--ease), border-color 300ms var(--ease), background 300ms var(--ease);
+  transition:
+    color 300ms var(--ease),
+    border-color 300ms var(--ease),
+    background 300ms var(--ease);
 }
 
 .topic-pill:hover {
@@ -200,7 +214,9 @@ body {
 
 .cta-outline {
   border-radius: 2px;
-  transition: border-color 400ms var(--ease), background 400ms var(--ease);
+  transition:
+    border-color 400ms var(--ease),
+    background 400ms var(--ease);
 }
 
 .cta-outline:hover {
@@ -248,4 +264,13 @@ body {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* ── Scrollbar Hide (for horizontal tab bars) ── */
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
 }

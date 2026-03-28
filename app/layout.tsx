@@ -4,8 +4,9 @@ import Header from "@/app/components/Header";
 import { SITE_CONFIG } from "@/lib/constants";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -78,8 +79,8 @@ export default function RootLayout({
                 </h4>
                 <ul className="mt-4 space-y-3">
                   <li>
-                    <a
-                      href="#tracks"
+                    <Link
+                      href="/#tracks"
                       className="text-sm text-secondary hover:text-platinum"
                       style={{
                         transition:
@@ -87,11 +88,11 @@ export default function RootLayout({
                       }}
                     >
                       Learning Tracks
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="#topics"
+                    <Link
+                      href="/#topics"
                       className="text-sm text-secondary hover:text-platinum"
                       style={{
                         transition:
@@ -99,11 +100,11 @@ export default function RootLayout({
                       }}
                     >
                       Featured Topics
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="#about"
+                    <Link
+                      href="/#about"
                       className="text-sm text-secondary hover:text-platinum"
                       style={{
                         transition:
@@ -111,7 +112,7 @@ export default function RootLayout({
                       }}
                     >
                       About
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -134,7 +135,9 @@ export default function RootLayout({
                     </span>
                   </li>
                   <li>
-                    <span className="text-sm text-secondary">Aceternity UI</span>
+                    <span className="text-sm text-secondary">
+                      Aceternity UI
+                    </span>
                   </li>
                 </ul>
               </div>

@@ -24,7 +24,7 @@ const EXPERIMENT_STEPS = [
     description:
       "You configure the experiment: 50% of your users (Group A, the Control) keep seeing the old experience. The other 50% (Group B, the Variant) see the new now-playing Follow button. The split is random but consistent. The same user always sees the same version.",
     realWorldNote:
-      "\"Random but consistent\" is key. If a user sees the old design on Monday and the new one on Wednesday, your data becomes useless. Platforms achieve this by hashing the user ID so the same user always lands in the same bucket.",
+      '"Random but consistent" is key. If a user sees the old design on Monday and the new one on Wednesday, your data becomes useless. Platforms achieve this by hashing the user ID so the same user always lands in the same bucket.',
   },
   {
     id: 2,
@@ -34,7 +34,7 @@ const EXPERIMENT_STEPS = [
     description:
       "The experiment runs for 2 full weeks. Both groups listen to music normally. Every time someone taps Follow, both groups' counts are recorded. At the end: Control had a 4.2% follow rate. Variant had a 5.8% follow rate. That's a +38% relative lift. Seemingly huge.",
     realWorldNote:
-      "Two weeks is the minimum for most experiments. The first week often shows inflated results because new things grab attention (the \"novelty effect\"). You need returning users, not just first-timers, to see if the change actually helps.",
+      'Two weeks is the minimum for most experiments. The first week often shows inflated results because new things grab attention (the "novelty effect"). You need returning users, not just first-timers, to see if the change actually helps.',
   },
   {
     id: 3,
@@ -78,10 +78,12 @@ export default function ABTestFlowDiagram() {
   return (
     <div className="bg-[#1A1C1E] border border-divider rounded-[2px] overflow-hidden">
       {/* ── Visual — Control vs Variant side-by-side ── */}
-      <div className="grid grid-cols-2 divide-x divide-divider border-b border-divider bg-[#15171a]">
+      <div className="grid grid-cols-1 sm:grid-cols-2 sm:divide-x divide-divider border-b border-divider bg-[#15171a]">
         {/* Control Side — Old experience */}
         <div className="p-5 flex flex-col items-center gap-3 text-center">
-          <span className="text-[9px] font-mono uppercase tracking-widest text-muted">Group A (Control)</span>
+          <span className="text-[9px] font-mono uppercase tracking-widest text-muted">
+            Group A (Control)
+          </span>
           {/* Now playing card mock */}
           <div className="w-full max-w-[130px] bg-[#1A1C1E] border border-divider rounded-[2px] p-3 space-y-2">
             <div className="w-full h-12 bg-surface/40 rounded-[2px] flex items-center justify-center">
@@ -92,18 +94,36 @@ export default function ABTestFlowDiagram() {
               <span className="text-[9px] text-muted">◀ ⏸ ▶</span>
             </div>
           </div>
-          <span className="text-[10px] text-muted mt-1">Follow button on artist page only</span>
+          <span className="text-[10px] text-muted mt-1">
+            Follow button on artist page only
+          </span>
           {step >= 2 && (
-            <motion.div initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} className="mt-1">
-              <span className="font-mono text-sm font-bold text-platinum">4.1%</span>
+            <motion.div
+              initial={{ opacity: 0, y: 4 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="mt-1"
+            >
+              <span className="font-mono text-sm font-bold text-platinum">
+                4.1%
+              </span>
               <span className="text-[9px] text-muted ml-1">follow rate</span>
             </motion.div>
           )}
         </div>
 
         {/* Variant Side — New experience */}
-        <div className={cn("p-5 flex flex-col items-center gap-3 text-center", step >= 1 ? "bg-accent/5" : "")}>
-          <span className={cn("text-[9px] font-mono uppercase tracking-widest", step >= 1 ? "text-accent" : "text-muted")}>
+        <div
+          className={cn(
+            "p-5 flex flex-col items-center gap-3 text-center",
+            step >= 1 ? "bg-accent/5" : "",
+          )}
+        >
+          <span
+            className={cn(
+              "text-[9px] font-mono uppercase tracking-widest",
+              step >= 1 ? "text-accent" : "text-muted",
+            )}
+          >
             Group B (Variant)
           </span>
           {/* Now playing card mock with Follow button */}
@@ -115,18 +135,39 @@ export default function ABTestFlowDiagram() {
             <div className="flex justify-between items-center mt-1">
               <span className="text-[9px] text-muted">◀ ⏸ ▶</span>
               <motion.div
-                animate={step >= 1 ? { scale: [1, 1.1, 1], borderColor: ["rgba(176,196,222,0.1)", "rgba(176,196,222,0.5)", "rgba(176,196,222,0.1)"] } : {}}
+                animate={
+                  step >= 1
+                    ? {
+                        scale: [1, 1.1, 1],
+                        borderColor: [
+                          "rgba(176,196,222,0.1)",
+                          "rgba(176,196,222,0.5)",
+                          "rgba(176,196,222,0.1)",
+                        ],
+                      }
+                    : {}
+                }
                 transition={{ duration: 2, repeat: step === 1 ? Infinity : 0 }}
                 className="border border-accent/40 px-1.5 py-0.5 rounded-[2px]"
               >
-                <span className="text-[8px] text-accent font-bold">+ Follow</span>
+                <span className="text-[8px] text-accent font-bold">
+                  + Follow
+                </span>
               </motion.div>
             </div>
           </div>
-          <span className="text-[10px] text-muted mt-1">Follow button on now-playing screen</span>
+          <span className="text-[10px] text-muted mt-1">
+            Follow button on now-playing screen
+          </span>
           {step >= 2 && (
-            <motion.div initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} className="mt-1">
-              <span className="font-mono text-sm font-bold text-accent">5.9%</span>
+            <motion.div
+              initial={{ opacity: 0, y: 4 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="mt-1"
+            >
+              <span className="font-mono text-sm font-bold text-accent">
+                5.9%
+              </span>
               <span className="text-[9px] text-muted ml-1">follow rate</span>
             </motion.div>
           )}
@@ -142,19 +183,31 @@ export default function ABTestFlowDiagram() {
           className="border-b border-divider px-5 py-4 flex flex-wrap gap-6 bg-[#15171a]"
         >
           <div className="flex items-center gap-2">
-            <span className="text-[10px] text-muted font-mono uppercase tracking-widest">p-value</span>
-            <span className="font-mono text-base font-bold text-accent">0.002</span>
+            <span className="text-[10px] text-muted font-mono uppercase tracking-widest">
+              p-value
+            </span>
+            <span className="font-mono text-base font-bold text-accent">
+              0.002
+            </span>
             <span className="text-[9px] text-emerald-400 bg-emerald-400/10 border border-emerald-400/20 px-1.5 py-0.5 rounded-[2px]">
               p &lt; 0.05 ✓
             </span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-[10px] text-muted font-mono uppercase tracking-widest">Lift</span>
-            <span className="font-mono text-base font-bold text-emerald-400">+44%</span>
+            <span className="text-[10px] text-muted font-mono uppercase tracking-widest">
+              Lift
+            </span>
+            <span className="font-mono text-base font-bold text-emerald-400">
+              +44%
+            </span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-[10px] text-muted font-mono uppercase tracking-widest">Users tested</span>
-            <span className="font-mono text-sm font-bold text-platinum">8,000</span>
+            <span className="text-[10px] text-muted font-mono uppercase tracking-widest">
+              Users tested
+            </span>
+            <span className="font-mono text-sm font-bold text-platinum">
+              8,000
+            </span>
           </div>
         </motion.div>
       )}
@@ -167,11 +220,24 @@ export default function ABTestFlowDiagram() {
           transition={{ duration: 0.5 }}
           className="border-b border-divider px-5 py-4 bg-emerald-500/5 flex items-center gap-3"
         >
-          <svg className="w-5 h-5 text-emerald-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+          <svg
+            className="w-5 h-5 text-emerald-400 shrink-0"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth="2"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+            />
           </svg>
           <p className="text-xs text-secondary">
-            <strong className="text-emerald-400">Variant B shipped!</strong> The now-playing Follow button went to 100% of users. Artist follows increased by ~40%. One carefully tested UI change, shipped with full confidence.
+            <strong className="text-emerald-400">Variant B shipped!</strong> The
+            now-playing Follow button went to 100% of users. Artist follows
+            increased by ~40%. One carefully tested UI change, shipped with full
+            confidence.
           </p>
         </motion.div>
       )}
@@ -179,9 +245,18 @@ export default function ABTestFlowDiagram() {
       {/* ── Step progress bar ── */}
       <div className="p-6">
         {/* Progress track */}
-        <div className="grid gap-1.5 mb-5" style={{ gridTemplateColumns: `repeat(${EXPERIMENT_STEPS.length}, 1fr)` }}>
+        <div
+          className="grid gap-1.5 mb-5"
+          style={{
+            gridTemplateColumns: `repeat(${EXPERIMENT_STEPS.length}, 1fr)`,
+          }}
+        >
           {EXPERIMENT_STEPS.map((s, i) => (
-            <button key={s.id} onClick={() => setStep(i)} className="flex flex-col gap-1 group text-left">
+            <button
+              key={s.id}
+              onClick={() => setStep(i)}
+              className="flex flex-col gap-1 group text-left"
+            >
               <div className="h-0.5 w-full bg-surface/50 overflow-hidden rounded-full">
                 <motion.div
                   className="h-full bg-accent origin-left"
@@ -190,9 +265,14 @@ export default function ABTestFlowDiagram() {
                   transition={{ duration: 0.35 }}
                 />
               </div>
-              <span className={cn("text-[8px] font-mono hidden md:block leading-tight transition-colors",
-                step === i ? "text-platinum font-bold" : "text-muted group-hover:text-secondary"
-              )}>
+              <span
+                className={cn(
+                  "text-[8px] font-mono hidden md:block leading-tight transition-colors",
+                  step === i
+                    ? "text-platinum font-bold"
+                    : "text-muted group-hover:text-secondary",
+                )}
+              >
                 {s.label}
               </span>
             </button>
@@ -204,8 +284,12 @@ export default function ABTestFlowDiagram() {
           <div className="flex items-center gap-3 px-5 py-3 border-b border-divider bg-surface/30">
             <span className="text-lg">{currentStepData.emoji}</span>
             <div>
-              <div className="text-[9px] text-muted uppercase tracking-widest font-mono">Phase {step + 1} of {EXPERIMENT_STEPS.length}</div>
-              <div className="text-sm font-semibold text-platinum">{currentStepData.phase}: {currentStepData.label}</div>
+              <div className="text-[9px] text-muted uppercase tracking-widest font-mono">
+                Phase {step + 1} of {EXPERIMENT_STEPS.length}
+              </div>
+              <div className="text-sm font-semibold text-platinum">
+                {currentStepData.phase}: {currentStepData.label}
+              </div>
             </div>
           </div>
 
@@ -218,13 +302,20 @@ export default function ABTestFlowDiagram() {
               transition={{ duration: 0.3 }}
               className="p-5 space-y-4"
             >
-              <p className="text-sm text-secondary leading-relaxed" style={{ lineHeight: "1.8" }}>
+              <p
+                className="text-sm text-secondary leading-relaxed"
+                style={{ lineHeight: "1.8" }}
+              >
                 {currentStepData.description}
               </p>
               <div className="flex items-start gap-2 p-3 bg-accent/5 border border-accent/15 rounded-[2px]">
                 <span className="text-accent text-xs mt-0.5 shrink-0">★</span>
-                <p className="text-xs text-secondary leading-relaxed" style={{ lineHeight: "1.7" }}>
-                  <strong className="text-accent">The real lesson:</strong> {currentStepData.realWorldNote}
+                <p
+                  className="text-xs text-secondary leading-relaxed"
+                  style={{ lineHeight: "1.7" }}
+                >
+                  <strong className="text-accent">The real lesson:</strong>{" "}
+                  {currentStepData.realWorldNote}
                 </p>
               </div>
             </motion.div>
@@ -241,9 +332,13 @@ export default function ABTestFlowDiagram() {
           >
             ← Back
           </button>
-          <span className="text-[10px] text-muted font-mono">{step + 1} / {EXPERIMENT_STEPS.length}</span>
+          <span className="text-[10px] text-muted font-mono">
+            {step + 1} / {EXPERIMENT_STEPS.length}
+          </span>
           <button
-            onClick={() => setStep((s) => Math.min(EXPERIMENT_STEPS.length - 1, s + 1))}
+            onClick={() =>
+              setStep((s) => Math.min(EXPERIMENT_STEPS.length - 1, s + 1))
+            }
             disabled={isLast}
             className="px-4 py-2 text-xs font-medium bg-platinum text-[#1A1C1E] disabled:opacity-40 disabled:cursor-not-allowed rounded-[2px]"
             style={{ transition: "all 300ms cubic-bezier(0.25,0.1,0.25,1)" }}
