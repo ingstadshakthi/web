@@ -127,6 +127,30 @@ export const TRACKS = [
       "Testing in CI/CD Pipelines",
     ],
   },
+  {
+    id: "react-system-design",
+    name: "React System Design",
+    description:
+      "React architecture patterns, hooks internals, state management at scale, server components, rendering strategies, performance optimization, and real-world system design with React.",
+    topicCount: 15,
+    topics: [
+      "React Rendering & Reconciliation",
+      "Hooks Internals & Custom Hooks",
+      "Component Composition Patterns",
+      "State Management at Scale",
+      "React Server Components & SSR",
+      "Concurrent React & Suspense",
+      "React Performance Optimization",
+      "Routing & Navigation Patterns",
+      "Data Fetching & Caching Strategies",
+      "Form Management & Validation",
+      "Error Boundaries & Resilience Patterns",
+      "Authentication & Authorization Patterns",
+      "Design System Architecture with React",
+      "Testing React Applications",
+      "React at Scale - Real-World Case Studies",
+    ],
+  },
 ] as const;
 
 /** Flat list of ALL topic names across all tracks — used by search */
@@ -167,8 +191,8 @@ export const FEATURED_TOPICS = [
 ] as const;
 
 export const STATS = [
-  { value: 51, suffix: "", label: "Topics" },
-  { value: 7, suffix: "", label: "Learning Tracks" },
+  { value: 66, suffix: "", label: "Topics" },
+  { value: 8, suffix: "", label: "Learning Tracks" },
   { value: 100, suffix: "%", label: "Frontend Focused" },
 ] as const;
 

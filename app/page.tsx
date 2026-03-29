@@ -2,7 +2,13 @@
 
 import { motion } from "motion/react";
 import Link from "next/link";
-import { TRACKS, FEATURED_TOPICS, STATS, VALUE_PROPS, TOPIC_ROUTES } from "@/lib/constants";
+import {
+  TRACKS,
+  FEATURED_TOPICS,
+  STATS,
+  VALUE_PROPS,
+  TOPIC_ROUTES,
+} from "@/lib/constants";
 import AnimatedCounter from "@/app/components/AnimatedCounter";
 import { TypewriterCycle } from "@/app/components/TypewriterCycle";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
@@ -16,47 +22,119 @@ const reveal = {
 /* ── Track Icons (inline SVG, stroke-only, architectural) ── */
 const TRACK_ICONS: Record<string, React.ReactNode> = {
   "web-fundamentals": (
-    <svg className="h-7 w-7 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      className="h-7 w-7 text-accent"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <circle cx="12" cy="12" r="10" />
       <path d="M2 12h20" />
       <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
     </svg>
   ),
   "javascript-deep-dive": (
-    <svg className="h-7 w-7 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      className="h-7 w-7 text-accent"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
     </svg>
   ),
   "css-ui-engineering": (
-    <svg className="h-7 w-7 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      className="h-7 w-7 text-accent"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <rect x="3" y="3" width="18" height="18" rx="1" />
       <path d="M3 9h18" />
       <path d="M9 21V9" />
     </svg>
   ),
   "browser-networking": (
-    <svg className="h-7 w-7 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      className="h-7 w-7 text-accent"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <rect x="2" y="3" width="20" height="14" rx="1" />
       <line x1="8" y1="21" x2="16" y2="21" />
       <line x1="12" y1="17" x2="12" y2="21" />
     </svg>
   ),
   "frontend-system-design": (
-    <svg className="h-7 w-7 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      className="h-7 w-7 text-accent"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <polygon points="12 2 2 7 12 12 22 7 12 2" />
       <polyline points="2 17 12 22 22 17" />
       <polyline points="2 12 12 17 22 12" />
     </svg>
   ),
   "performance-security": (
-    <svg className="h-7 w-7 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      className="h-7 w-7 text-accent"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
     </svg>
   ),
   "frontend-testing": (
-    <svg className="h-7 w-7 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      className="h-7 w-7 text-accent"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M9 11l3 3L22 4" />
       <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" />
+    </svg>
+  ),
+  "react-system-design": (
+    <svg
+      className="h-7 w-7 text-accent"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <circle cx="12" cy="12" r="2.5" />
+      <ellipse cx="12" cy="12" rx="10" ry="4" />
+      <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)" />
+      <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)" />
     </svg>
   ),
 };
@@ -64,24 +142,50 @@ const TRACK_ICONS: Record<string, React.ReactNode> = {
 /* ── Value Prop Icons ── */
 const VALUE_ICONS: React.ReactNode[] = [
   /* Layers — structured learning */
-  <svg key="layers" className="h-8 w-8 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    key="layers"
+    className="h-8 w-8 text-accent"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <polygon points="12 2 2 7 12 12 22 7 12 2" />
     <polyline points="2 17 12 22 22 17" />
     <polyline points="2 12 12 17 22 12" />
   </svg>,
   /* Code — framework agnostic */
-  <svg key="code" className="h-8 w-8 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    key="code"
+    className="h-8 w-8 text-accent"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <polyline points="16 18 22 12 16 6" />
     <polyline points="8 6 2 12 8 18" />
   </svg>,
   /* Target — system design depth */
-  <svg key="target" className="h-8 w-8 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    key="target"
+    className="h-8 w-8 text-accent"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <circle cx="12" cy="12" r="10" />
     <circle cx="12" cy="12" r="6" />
     <circle cx="12" cy="12" r="2" />
   </svg>,
 ];
-
 
 export default function Home() {
   return (
@@ -97,7 +201,8 @@ export default function Home() {
         <div
           className="absolute left-1/2 top-1/3 h-[480px] w-[480px] -translate-x-1/2 -translate-y-1/2"
           style={{
-            background: "radial-gradient(circle, rgba(176,196,222,0.06) 0%, transparent 70%)",
+            background:
+              "radial-gradient(circle, rgba(176,196,222,0.06) 0%, transparent 70%)",
           }}
           aria-hidden="true"
         />
@@ -117,7 +222,11 @@ export default function Home() {
             <br />
             <span className="inline-block min-h-[1.2em]">
               <TypewriterCycle
-                words={["Frontend Engineering", "System Design", "Web Performance"]}
+                words={[
+                  "Frontend Engineering",
+                  "System Design",
+                  "Web Performance",
+                ]}
                 typingSpeed={90}
                 deletingSpeed={45}
                 pauseDuration={3000}
@@ -220,11 +329,12 @@ export default function Home() {
                   delay: i * 0.08,
                 }}
               >
-                <div id={track.id} className="track-card flex h-full flex-col p-8">
+                <div
+                  id={track.id}
+                  className="track-card flex h-full flex-col p-8"
+                >
                   {/* Icon */}
-                  <div className="mb-6">
-                    {TRACK_ICONS[track.id]}
-                  </div>
+                  <div className="mb-6">{TRACK_ICONS[track.id]}</div>
 
                   {/* Title */}
                   <h3 className="font-heading text-xl font-semibold text-platinum">
@@ -238,19 +348,29 @@ export default function Home() {
 
                   {/* Topics List */}
                   <ul className="mt-5 space-y-1.5 border-t border-divider pt-5">
-                    {track.topics.map((topic) => {
+                    {track.topics.slice(0, 10).map((topic) => {
                       const route = TOPIC_ROUTES[topic];
                       return (
-                        <li key={topic} className="flex items-start gap-2 text-xs">
-                          <span className={`mt-1 block h-1 w-1 shrink-0 rounded-full ${route ? 'bg-accent' : 'bg-accent opacity-50'}`} />
+                        <li
+                          key={topic}
+                          className="flex items-start gap-2 text-xs"
+                        >
+                          <span
+                            className={`mt-1 block h-1 w-1 shrink-0 rounded-full ${route ? "bg-accent" : "bg-accent opacity-50"}`}
+                          />
                           {route ? (
                             <Link
                               href={route}
                               className="text-platinum hover:text-accent flex items-center gap-1.5 group"
-                              style={{ transition: "color 300ms cubic-bezier(0.25, 0.1, 0.25, 1)" }}
+                              style={{
+                                transition:
+                                  "color 300ms cubic-bezier(0.25, 0.1, 0.25, 1)",
+                              }}
                             >
                               {topic}
-                              <span className="text-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300">→</span>
+                              <span className="text-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                →
+                              </span>
                             </Link>
                           ) : (
                             <span className="text-muted">{topic}</span>
@@ -258,6 +378,11 @@ export default function Home() {
                         </li>
                       );
                     })}
+                    {track.topics.length > 10 && (
+                      <li className="text-xs text-muted italic pt-1">
+                        and {track.topics.length - 10} more
+                      </li>
+                    )}
                   </ul>
 
                   {/* Topic Count Badge */}
@@ -300,8 +425,8 @@ export default function Home() {
               Featured Topics
             </h2>
             <p className="mx-auto mt-4 max-w-lg text-secondary">
-              Essential frontend concepts every engineer should master.
-              Dive into any subject that interests you.
+              Essential frontend concepts every engineer should master. Dive
+              into any subject that interests you.
             </p>
           </motion.div>
 
@@ -310,13 +435,24 @@ export default function Home() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1], delay: 0.12 }}
+            transition={{
+              duration: 0.6,
+              ease: [0.25, 0.1, 0.25, 1],
+              delay: 0.12,
+            }}
             className="mt-12 flex flex-wrap justify-center gap-3"
           >
             {FEATURED_TOPICS.map((topic) => {
               const route = TOPIC_ROUTES[topic];
               return route ? (
-                <Link key={topic} href={route} className="topic-pill hover:border-accent/40 hover:text-accent" style={{ transition: "all 300ms cubic-bezier(0.25, 0.1, 0.25, 1)" }}>
+                <Link
+                  key={topic}
+                  href={route}
+                  className="topic-pill hover:border-accent/40 hover:text-accent"
+                  style={{
+                    transition: "all 300ms cubic-bezier(0.25, 0.1, 0.25, 1)",
+                  }}
+                >
                   {topic}
                 </Link>
               ) : (
@@ -376,7 +512,10 @@ export default function Home() {
                   <h3 className="mt-6 font-heading text-lg font-semibold text-platinum">
                     {prop.title}
                   </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-secondary" style={{ lineHeight: "1.8" }}>
+                  <p
+                    className="mt-3 text-sm leading-relaxed text-secondary"
+                    style={{ lineHeight: "1.8" }}
+                  >
                     {prop.description}
                   </p>
                 </div>
@@ -405,8 +544,8 @@ export default function Home() {
               Begin Your Journey Today
             </h2>
             <p className="mx-auto mt-6 max-w-md text-secondary">
-              Explore 51 deep-dive topics across 7 structured learning
-              tracks — all framework-agnostic and free.
+              Explore 66 deep-dive topics across 8 structured learning tracks —
+              all framework-agnostic and free.
             </p>
             <div className="mt-10">
               <a
