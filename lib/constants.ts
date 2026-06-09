@@ -99,7 +99,7 @@ export const TRACKS = [
     name: "Performance & Security",
     description:
       "Core Web Vitals, lazy loading, code splitting, tree shaking, XSS/CSRF prevention, CSP headers, and performance profiling.",
-    topicCount: 7,
+    topicCount: 8,
     topics: [
       "Core Web Vitals & Lighthouse",
       "Lazy Loading, Virtualization & Code Splitting",
@@ -108,6 +108,7 @@ export const TRACKS = [
       "Frontend Security (XSS, CSRF, Clickjacking)",
       "Content Security Policy & CORS",
       "Build Tools, Bundlers & Tree Shaking",
+      "Rate Limiting"
     ],
   },
   {
@@ -173,6 +174,7 @@ export const TOPIC_ROUTES: Record<string, string> = {
   "A/B Testing & Experimentation": "/testing/ab-testing-experimentation",
   "Semantic HTML": "/fundamentals/semantic-html",
   "Execution Context & Hoisting": "/javascript/execution-context-hoisting",
+  "Rate Limiting": "/performance-security/rate-limiting",
 };
 
 export const FEATURED_TOPICS = [
